@@ -364,7 +364,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         file_content = file.read() # 读取用户上传的文件，返回二进制数据
         with open(temp_file_path,'wb') as temp_file:
             temp_file.write(file_content) # 向临时文件写入内容
-    temp_attachment_path = 'website_Articleanalysis\\temp_attachment.CSV' # 临时附件路径
+    temp_attachment_path = '/mount/src/website-articlereader/temp_attachment.CSV' # 临时附件路径
     if attachment:
         attachment_content = attachment.read() # 附件内容
         with open(temp_attachment_path,'wb') as temp_file:
@@ -484,4 +484,5 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         )
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
+
     return output_text
