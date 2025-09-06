@@ -43,7 +43,7 @@ with col2:
     # 插入图片
     image = st.empty()
     if not question_input and not button_summary:
-        image = st.image('website_Articleanalysis\\线条小狗.png')
+        image = st.image('线条小狗.png')
     # 插入回复
     if api_key_input and question_input and not file_pdf_input: # 当api密钥和用户的问题均输入时
         image = st.empty()
@@ -71,4 +71,5 @@ with col2:
             button_download_input = st.download_button(label = '导出CSV文件',data = file,mime = 'text/csv')
 if button_clear:
     temp_df = dataframe_model()
+
     temp_df.to_csv(file_path)
