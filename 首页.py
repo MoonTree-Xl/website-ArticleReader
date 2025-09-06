@@ -44,7 +44,7 @@ with col2:
     # 插入图片
     image = st.empty()
     if not question_input and not button_summary:
-        pass
+        image = st.image('website-articlereader\\images\\线条小狗.png')
     # 插入回复
     if api_key_input and question_input and not file_pdf_input: # 当api密钥和用户的问题均输入时
         image = st.empty()
@@ -74,4 +74,5 @@ if button_clear:
     temp_df = dataframe_model()
     temp_df.to_csv(file_path)
 st.write(f"当前工作目录: {os.getcwd()}")
+
 st.write(f"尝试查找的图片路径: {os.path.abspath('images/线条小狗.png')}")
