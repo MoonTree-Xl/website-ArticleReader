@@ -41,7 +41,7 @@ with st.sidebar: # 文件上传侧边栏
         check_revise_i = st.checkbox('修改信息',key='check')
     # csv文件导出
     if loader_csv_i:
-        file_path = 'website_Articleanalysis\\temp_attachment.CSV'
+        file_path = 'website-articlereader\\temp_attachment.CSV'
         st.session_state.df_article.to_csv(file_path,encoding='utf-8')
         with open(file_path,'r',encoding='utf-8') as file:
             button_download_input = st.download_button(label = '导出CSV文件',data = file,mime = 'text/csv')
@@ -174,3 +174,4 @@ if loader_csv_i and select_index_i and check_revise_i: # 文件、索引、勾�
                 reset_values() # 回到默认页
 
                 st.rerun()
+
