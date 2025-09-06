@@ -4,7 +4,7 @@ import pandas as pd
 def csv_loader(file): # 用途是创建一个从csv文件中提取出的dataframe
     # 创建临时文件
     csv_content = file.read() # 用户上传的csv文件的内容
-    temp_csv_path = 'website_Articleanalysis\\temp_csv_user.CSV' # 临时文件存放路径
+    temp_csv_path = '/mount/src/website-articlereader/temp_csv_user.CSV' # 临时文件存放路径
     with open(temp_csv_path,'wb') as file:
         file.write(csv_content) # 向临时文件中写入用户上传的csv文件内容
     # 创建dataframe
@@ -93,3 +93,4 @@ def show_data(dataframe,index):
         return output_text
     output_text = text_maker(dataframe,index)
     return output_text
+
