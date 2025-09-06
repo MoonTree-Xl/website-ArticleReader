@@ -48,8 +48,7 @@ with st.sidebar: # 文件上传侧边栏
 if not loader_csv_i or (loader_csv_i and (not select_index_i or not check_revise_i)):
     # 创建首页
     title = st.markdown(f'# <center> 🐇 数据库修改页 🐇 <center>', unsafe_allow_html=True)
-    image_path = 'images\\夏日树荫.png'
-    image = st.image(image_path)
+    image = st.image('website-articlereader\\images\\夏日树荫.png')
     
 # 初始化变量
 if loader_csv_i and select_index_i and check_revise_i: # 文件、索引、勾选框均打开
@@ -85,8 +84,7 @@ if loader_csv_i and select_index_i and check_revise_i: # 文件、索引、勾�
         with col2:
             st.title('数据库修改页⭐')
             st.write('Notice：')
-            image_path = 'pages\\小猫.png'
-            st.image(image_path)
+            image = st.image('website-articlereader\\images\\小猫.png')
         st.session_state.editing = False # 如果索引在“默认页”，关闭编辑模式
 # 执行调整程序
 if loader_csv_i and select_index_i and check_revise_i == True: # 文件、索引、勾选框均打开
@@ -174,4 +172,5 @@ if loader_csv_i and select_index_i and check_revise_i: # 文件、索引、勾�
                 st.session_state.editing = False
                 st.session_state.initialized = False
                 reset_values() # 回到默认页
+
                 st.rerun()
