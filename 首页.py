@@ -1,7 +1,6 @@
 import streamlit as st
 from langchain.memory import ConversationBufferMemory
 from utils_n import summary_model,dataframe_model
-import os
 
 # 设置页面为宽屏模式
 st.set_page_config(page_title='首页',layout='wide')
@@ -73,8 +72,3 @@ with col2:
 if button_clear:
     temp_df = dataframe_model()
     temp_df.to_csv(file_path)
-st.write(f"当前工作目录: {os.getcwd()}")
-st.write(f"尝试查找的图片路径: {os.path.abspath('images/线条小狗.png')}")
-
-
-
