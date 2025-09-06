@@ -66,7 +66,7 @@ with col2:
                                    check_csv_input)
             st.markdown(result)
     # 导出CSV文件
-    file_path = 'website-articlereader\\temp_attachment.CSV'
+    file_path = '/mount/src/website-articlereader/temp_attachment.CSV'
     if button_summary:
         with open(file_path,'r',encoding='utf-8') as file:
             button_download_input = st.download_button(label = '导出CSV文件',data = file,mime = 'text/csv')
@@ -75,5 +75,6 @@ if button_clear:
     temp_df.to_csv(file_path)
 st.write(f"当前工作目录: {os.getcwd()}")
 st.write(f"尝试查找的图片路径: {os.path.abspath('images/线条小狗.png')}")
+
 
 
