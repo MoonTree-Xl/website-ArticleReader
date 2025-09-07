@@ -12,7 +12,7 @@ with st.sidebar:
     check_key_input = st.checkbox('是否使用默认API密钥？')
     if check_key_input:
         api_key_input = 'sk-e20782e92bb845d5844b02ef9d60975c'
-    st.markdown('[获取API密钥](https://platform.deepseek.com/api_keys)') # deepseek密钥获取网址
+    st.markdown('[获取API密钥](https://bailian.console.aliyun.com/?spm=5176.29597918.J_SEsSjsNv72yRuRFS2VknO.2.27627b08S2bX9I&tab=model#/api-key)') # 密钥获取网址
     st.divider() # 创建分割线
     st.write('⭐文章内容总结板块')
     file_csv_input = st.file_uploader('请上传CSV文件：',type = ['CSV','csv']) # 用户上传的csv文件
@@ -72,3 +72,4 @@ with col2:
 if button_clear:
     temp_df = dataframe_model()
     temp_df.to_csv(file_path)
+
