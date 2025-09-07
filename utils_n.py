@@ -376,9 +376,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         if 'White' in temp_df.index:
             temp_df.drop('White')
     if attachment == None:
-        temp_df = dataframe_model()
-        if 'White' in temp_df.index:
-            temp_df.drop('White')
+        csv_maker(temp_attachment_path)
     # 创建聊天模型
     chat_model = ChatOpenAI(
         model = 'qwen-plus',
@@ -486,6 +484,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
     return output_text
+
 
 
 
