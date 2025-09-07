@@ -28,3 +28,7 @@ if file_csv_input and check_info_input:
     result_text = show_data(st.session_state['df_article'],select_article_input)
     text_show = st.empty()
     text_show.markdown(result_text)
+# 重置df
+if not file_csv_input:
+    if 'df_article' in st.session_state:
+        del st.seesion_state.df_article
