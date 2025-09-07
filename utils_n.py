@@ -376,9 +376,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         if 'White' in temp_df.index:
             temp_df.drop('White')
     if attachment == None:
-        temp_df = pd.read_csv(temp_attachment_path)
-        temp_df.rename(columns={'Unnamed: 0':'标题'},inplace = True)
-        temp_df.set_index('标题',inplace = True)
+        temp_df = dataframe_model()
         if 'White' in temp_df.index:
             temp_df.drop('White')
     # 创建聊天模型
@@ -488,6 +486,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
     return output_text
+
 
 
 
