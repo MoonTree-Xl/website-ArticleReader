@@ -13,10 +13,10 @@ import pandas as pd
 
 def article_reader(temp_file_path:str)->str: # 返回一个文章信息总结字符串
     # 定义参数
-    chat_m = 'deepseek-reasoner'
+    chat_m = 'qwen-plus'
     embeddings_m = 'text-embedding-v4'
-    api_k = 'sk-f3d2ef351d1d45c5ad4b55423be9a256'
-    base_u = 'https://api.deepseek.com'
+    api_k = 'sk-e20782e92bb845d5844b02ef9d60975c'
+    base_u = 'https://dashscope.aliyuncs.com/compatible-mode/v1'
     # 创建聊天模型
     read_model = ChatOpenAI(
         model = chat_m,
@@ -488,4 +488,5 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
     return output_text
+
 
