@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from langchain.memory import ConversationBufferMemory
 from utils_n import summary_model,dataframe_model
 
@@ -76,8 +77,8 @@ with col2:
         with open(file_path,'r',encoding='utf-8') as file:
             button_download_input = st.download_button(label = '导出CSV文件',data = file,mime = 'text/csv')
             if button_download_input:
-                temp_df = dataframe_model()
-                temp_df.to_csv('/mount/src/website-articlereader/temp_attachment.CSV')
+                os.remove('/mount/src/website-articlereader/temp_attachment.CSV')
 if button_clear:
-    temp_df = dataframe_model()
-    temp_df.to_csv('/mount/src/website-articlereader/temp_attachment.CSV')
+    os.remove('/mount/src/website-articlereader/temp_attachment.CSV')
+    
+
