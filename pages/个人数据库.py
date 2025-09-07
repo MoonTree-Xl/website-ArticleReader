@@ -32,5 +32,6 @@ if file_csv_input and check_info_input:
 if not file_csv_input:
     if 'df_article' in st.session_state:
         del st.seesion_state.df_article
-    if 'df_article' not in se.session_state:
+    if 'df_article' not in st.session_state:
         pass
+
