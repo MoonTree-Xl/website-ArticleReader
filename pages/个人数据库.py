@@ -7,6 +7,10 @@ st.set_page_config(layout="wide")
 with st.sidebar:
     # 文件上传入口
     file_csv_input = st.file_uploader('请上传CSV文件',type = ['CSV','csv'])
+    # 重置df
+    button_reset = st.button('重置数据库')
+    if 'df_article' in st.session_state:
+        del st.session_state.df_article
 # 创建dataframe
 if file_csv_input is not None:
     if 'df_article' not in st.session_state:
