@@ -64,6 +64,12 @@ with col2:
                                    question_input,file_pdf_input,file_csv_input,button_summary,
                                    check_csv_input)
             st.markdown(result)
+    if api_key_input and question_input and file_pdf_input: # 当api密钥和用户的问题和文件均输入时
+        image = st.empty()
+        st.write('回复：')
+        with st.spinner('AI正在思考，请稍等...'):
+            result = summary_model(api_key_input,st.session_state['chat_memory'],question_input,file_pdf_input)
+            st.write(result)
     # 导出CSV文件
     file_path = '/mount/src/website-articlereader/temp_attachment.CSV'
     if button_summary:
@@ -72,4 +78,5 @@ with col2:
 if button_clear:
     temp_df = dataframe_model()
     temp_df.to_csv(file_path)
+
 
