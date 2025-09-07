@@ -75,11 +75,9 @@ with col2:
     if button_summary:
         with open(file_path,'r',encoding='utf-8') as file:
             button_download_input = st.download_button(label = '导出CSV文件',data = file,mime = 'text/csv')
-            temp_df = dataframe_model()
-            temp_df.to_csv('/mount/src/website-articlereader/temp_attachment.CSV')
+            if button_download_input:
+                temp_df = dataframe_model()
+                temp_df.to_csv('/mount/src/website-articlereader/temp_attachment.CSV')
 if button_clear:
     temp_df = dataframe_model()
     temp_df.to_csv('/mount/src/website-articlereader/temp_attachment.CSV')
-
-
-
