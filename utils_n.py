@@ -13,10 +13,10 @@ import pandas as pd
 
 def article_reader(temp_file_path:str)->str: # 返回一个文章信息总结字符串
     # 定义参数
-    chat_m = 'qwen-plus'
+    chat_m = 'deepseek-reasoner'
     embeddings_m = 'text-embedding-v4'
-    api_k = 'sk-e20782e92bb845d5844b02ef9d60975c'
-    base_u = 'https://dashscope.aliyuncs.com/compatible-mode/v1'
+    api_k = 'sk-f3d2ef351d1d45c5ad4b55423be9a256'
+    base_u = 'https://api.deepseek.com'
     # 创建聊天模型
     read_model = ChatOpenAI(
         model = chat_m,
@@ -88,7 +88,7 @@ def article_reader(temp_file_path:str)->str: # 返回一个文章信息总结字
               '判断完成后再对内容根据类型不同进行总结，'
               '若判断文章类型为“期刊论文”，则提取该文章的【文章名】、【刊物名称】、【发文时间】、【作者】、'
               '【摘要】、【关键词】，'
-              '其中，若有两个及以上作者的，注意作者排序，【摘要】有时候也会以【内容提示】的形式出现，'
+              '其中，若有两个及以上作者的，注意作者排序，【摘要】有时候也会以【内容提示】、【内容提要】的形式出现，'
               '【文章名】是这篇文章的标题，一般出现在第一页，可能会以“……研究”结尾。'
               '完成后，对全文总结一个【文章概览】，内容按照“写作背景→实验设计→研究方法→研究结论”的框架排布，'
               '字数大概不超过500字；'
@@ -99,7 +99,8 @@ def article_reader(temp_file_path:str)->str: # 返回一个文章信息总结字
               '、【是否有附件】，'
               '完成后，对全文内容总结一个【文章概览】，字数不超过500字；'
               '若判断文章类型为“其他文章”，则提取【文章名】，然后对全文内容总结【文章概览】，字数不超过500字。'
-              '注意，【文章名】是这篇文章的标题，通常是第一页页眉下第一行标题，所有的【文章名】都要与原文一致，不要自行发挥进行总结。'
+              '注意，【文章名】是这篇文章的标题，通常是第一页页眉下第一行标题，所有的【文章名】都要与原文一致，不要自行发挥进行总结。
+              对于“其他文章”，有时候不会直接出现【文章名】，你要在总结全文的基础上凝练出一个标题。'
               '完成后，根据文章类型，按照以下格式进行输出，格式模板用#号包围：\n'
               '#\n'
               f'若文章类型为“期刊论文”，则按照模板{prompt_j}；'
@@ -487,3 +488,4 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
     return output_text
+
