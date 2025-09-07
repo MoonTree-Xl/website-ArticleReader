@@ -29,9 +29,6 @@ if file_csv_input and check_info_input:
     text_show = st.empty()
     text_show.markdown(result_text)
 # 重置df
-if not file_csv_input:
-    if 'df_article' in st.session_state:
-        del st.seesion_state.df_article
-    if 'df_article' not in st.session_state:
-        pass
-
+button_reset = st.button('重置数据库')
+if 'df_article' in st.session_state:
+    del st.session_state.df_article
