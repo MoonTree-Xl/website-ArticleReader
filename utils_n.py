@@ -10,6 +10,7 @@ from langchain_community.vectorstores import FAISS
 from pydantic import BaseModel,Field
 from typing import List
 import pandas as pd
+import os
 
 def article_reader(temp_file_path:str)->str: # 返回一个文章信息总结字符串
     # 定义参数
@@ -366,7 +367,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         with open(temp_file_path,'wb') as temp_file:
             temp_file.write(file_content) # 向临时文件写入内容
     temp_attachment_path = '/mount/src/website-articlereader/temp_attachment.CSV' # 临时附件路径
-    if attachment:
+    if attachment != None:
         attachment_content = attachment.read() # 附件内容
         with open(temp_attachment_path,'wb') as temp_file:
             temp_file.write(attachment_content) # 向附件临时文件写入内容
@@ -376,7 +377,10 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         if 'White' in temp_df.index:
             temp_df.drop('White')
     if attachment == None:
-        csv_maker(temp_attachment_path)
+        if os.path.exists('/mount/src/website-articlereader/temp_attachment.CSV'):
+            pass
+        if not os.path.exists('/mount/src/website-articlereader/temp_attachment.CSV'):
+            csv_maker(temp_attachment_path)
     # 创建聊天模型
     chat_model = ChatOpenAI(
         model = 'qwen-plus',
@@ -484,6 +488,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
     return output_text
+
 
 
 
