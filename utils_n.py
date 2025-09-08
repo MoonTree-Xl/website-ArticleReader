@@ -413,8 +413,6 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
             retriever = retriever,
             memory = memory
         )
-        response = qa.invoke({'chat_history':memory,'question':question})
-        output_text = response['answer']
         if summary_button:
             # 定义工具函数
             # 字符串拼接函数
@@ -488,6 +486,7 @@ def summary_model(api_key,memory,question,file=None,attachment=None,summary_butt
         result = normal_chain.invoke({'input':question})
         output_text = result['response']
     return output_text
+
 
 
 
